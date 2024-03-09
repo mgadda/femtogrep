@@ -33,8 +33,6 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
           paths_to_process.push_back(path);
         }
       }
-
-      // paths_to_process.extend()
     } else if path.is_file() {
       let _ = run_one(config.query, &file_path);
     }
@@ -81,32 +79,32 @@ pub struct Config<'a> {
   // practice, the string references that will be held here come from values
   // that live for the duration of the program.
   pub query: &'a str,
-  pub file_paths: &'a [String],
+  pub file_paths: &'a Vec<String>,
   pub recursive: bool,
 }
 
-impl<'a> Config<'a> {
-  pub fn build(args: &'a [String]) -> Result<Config<'a>, &'static str> {
-    if args.len() < 3 {
-      return Err("not enough arguments");
-    }
-
-    let query = &args[1]; //.clone();
-    let file_paths = &args[2..]; //.clone();
-
-    Ok(Config {
-      query,
-      file_paths,
-      recursive: true,
-    })
-  }
-}
+// impl<'a> Config<'a> {
+//   pub fn build(args: &'a [String]) -> Result<Config<'a>, &'static str> {
+//     if args.len() < 3 {
+//       return Err("not enough arguments");
+//     }
+//
+//     let query = &args[1]; //.clone();
+//     let file_paths = &args[2..]; //.clone();
+//
+//     Ok(Config {
+//       query,
+//       file_paths,
+//       recursive: true,
+//     })
+//   }
+// }
 
 pub fn search<'a>(query: &'a str, contents: &'a str) -> Vec<(&'a str, RMatchIndices<'a, &'a str>)> {
   // 'a lifetime var connects the lifetime of contents to the return value
   // since the return value is a list of str references from contents
   contents
-    .split("\n")
+    .lines()
     .filter_map(|line| {
       if line.contains(query) {
         Some((line, line.rmatch_indices(query)))
