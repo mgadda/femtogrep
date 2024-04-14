@@ -1,10 +1,10 @@
 # Overview
 
-femtogrep is a few-frills tool for finding text strings in files.
-it has two redeeming features:
+femtogrep is a no-frills tool for finding text strings in files.
+It has exactly two redeeming features:
 
-- it's default output is very human-readable
-- it's very fast. like, 10x faster than grep. See _Performance_ below.
+- It's default output is very human-readable
+- It's very fast. close to 10x faster than grep for support queries. See _Performance_ below.
 
 # Installation
 
