@@ -3,14 +3,16 @@
 femtogrep is a no-frills tool for finding text strings in files.
 It has exactly two redeeming features:
 
-- It's default output is very human-readable
+- Its default output is very human-readable
 - It's very fast. close to 10x faster than grep for support queries. See _Performance_ below.
 
 # Installation
 
 ## Build from source
 
+```shell
 cargo install femtogrep
+```
 
 # Usage
 
