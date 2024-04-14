@@ -1,10 +1,10 @@
 use clap::Parser;
-use minigrep::*;
+use femtogrep::*;
 use std::{env, process};
 
 #[derive(Parser, Debug)]
 #[command(author = "Matt Gadda", version, about = "No frills portable string searching", long_about = None)]
-struct MinigrepArgs {
+struct FemtoGrepArgs {
   /// Search recursively
   #[arg(short, long, default_value_t = false)]
   recursive: bool,
@@ -17,7 +17,7 @@ struct MinigrepArgs {
 }
 
 fn main() {
-  let args = MinigrepArgs::parse();
+  let args = FemtoGrepArgs::parse();
   let config = Config {
     query: &args.expression,
     file_paths: &args.file_paths,
