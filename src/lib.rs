@@ -83,23 +83,6 @@ pub struct Config<'a> {
   pub recursive: bool,
 }
 
-// impl<'a> Config<'a> {
-//   pub fn build(args: &'a [String]) -> Result<Config<'a>, &'static str> {
-//     if args.len() < 3 {
-//       return Err("not enough arguments");
-//     }
-//
-//     let query = &args[1]; //.clone();
-//     let file_paths = &args[2..]; //.clone();
-//
-//     Ok(Config {
-//       query,
-//       file_paths,
-//       recursive: true,
-//     })
-//   }
-// }
-
 pub fn search<'a>(query: &'a str, contents: &'a str) -> Vec<(&'a str, RMatchIndices<'a, &'a str>)> {
   // 'a lifetime var connects the lifetime of contents to the return value
   // since the return value is a list of str references from contents
