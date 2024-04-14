@@ -111,6 +111,6 @@ safe, fast, productive.
 Pick three.
     ";
 
-    assert_eq!("Pick", search(query, contents)[0].0);
+    assert_eq!("Pick", search(query, contents)[0].1.next().unwrap().1);
   }
 }
